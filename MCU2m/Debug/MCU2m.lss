@@ -1,0 +1,1947 @@
+
+MCU2m.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000009f6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000001e8  00800060  000009f6  00000a8a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000a  00800248  00800248  00000c72  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000c72  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000ca4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001e0  00000000  00000000  00000ce0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000022de  00000000  00000000  00000ec0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000d51  00000000  00000000  0000319e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000010ba  00000000  00000000  00003eef  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000390  00000000  00000000  00004fac  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005e8  00000000  00000000  0000533c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000e2e  00000000  00000000  00005924  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000190  00000000  00000000  00006752  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 5b 02 	jmp	0x4b6	; 0x4b6 <__vector_1>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	12 e0       	ldi	r17, 0x02	; 2
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 ef       	ldi	r30, 0xF6	; 246
+  68:	f9 e0       	ldi	r31, 0x09	; 9
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 34       	cpi	r26, 0x48	; 72
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	22 e0       	ldi	r18, 0x02	; 2
+  78:	a8 e4       	ldi	r26, 0x48	; 72
+  7a:	b2 e0       	ldi	r27, 0x02	; 2
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a2 35       	cpi	r26, 0x52	; 82
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 33 02 	call	0x466	; 0x466 <main>
+  8a:	0c 94 f9 04 	jmp	0x9f2	; 0x9f2 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <DIO_SetPinDir>:
+
+		break;
+
+	case DIO_PORTD :
+
+		PORTD = Val;
+  92:	44 23       	and	r20, r20
+  94:	b9 f1       	breq	.+110    	; 0x104 <DIO_SetPinDir+0x72>
+  96:	41 30       	cpi	r20, 0x01	; 1
+  98:	09 f0       	breq	.+2      	; 0x9c <DIO_SetPinDir+0xa>
+  9a:	6b c0       	rjmp	.+214    	; 0x172 <DIO_SetPinDir+0xe0>
+  9c:	81 30       	cpi	r24, 0x01	; 1
+  9e:	89 f0       	breq	.+34     	; 0xc2 <DIO_SetPinDir+0x30>
+  a0:	28 f0       	brcs	.+10     	; 0xac <DIO_SetPinDir+0x1a>
+  a2:	82 30       	cpi	r24, 0x02	; 2
+  a4:	c9 f0       	breq	.+50     	; 0xd8 <DIO_SetPinDir+0x46>
+  a6:	83 30       	cpi	r24, 0x03	; 3
+  a8:	11 f1       	breq	.+68     	; 0xee <DIO_SetPinDir+0x5c>
+  aa:	08 95       	ret
+  ac:	2a b3       	in	r18, 0x1a	; 26
+  ae:	81 e0       	ldi	r24, 0x01	; 1
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	02 c0       	rjmp	.+4      	; 0xb8 <DIO_SetPinDir+0x26>
+  b4:	88 0f       	add	r24, r24
+  b6:	99 1f       	adc	r25, r25
+  b8:	6a 95       	dec	r22
+  ba:	e2 f7       	brpl	.-8      	; 0xb4 <DIO_SetPinDir+0x22>
+  bc:	82 2b       	or	r24, r18
+  be:	8a bb       	out	0x1a, r24	; 26
+  c0:	08 95       	ret
+  c2:	27 b3       	in	r18, 0x17	; 23
+  c4:	81 e0       	ldi	r24, 0x01	; 1
+  c6:	90 e0       	ldi	r25, 0x00	; 0
+  c8:	02 c0       	rjmp	.+4      	; 0xce <DIO_SetPinDir+0x3c>
+  ca:	88 0f       	add	r24, r24
+  cc:	99 1f       	adc	r25, r25
+  ce:	6a 95       	dec	r22
+  d0:	e2 f7       	brpl	.-8      	; 0xca <DIO_SetPinDir+0x38>
+  d2:	82 2b       	or	r24, r18
+  d4:	87 bb       	out	0x17, r24	; 23
+  d6:	08 95       	ret
+  d8:	24 b3       	in	r18, 0x14	; 20
+  da:	81 e0       	ldi	r24, 0x01	; 1
+  dc:	90 e0       	ldi	r25, 0x00	; 0
+  de:	02 c0       	rjmp	.+4      	; 0xe4 <DIO_SetPinDir+0x52>
+  e0:	88 0f       	add	r24, r24
+  e2:	99 1f       	adc	r25, r25
+  e4:	6a 95       	dec	r22
+  e6:	e2 f7       	brpl	.-8      	; 0xe0 <DIO_SetPinDir+0x4e>
+  e8:	82 2b       	or	r24, r18
+  ea:	84 bb       	out	0x14, r24	; 20
+  ec:	08 95       	ret
+  ee:	21 b3       	in	r18, 0x11	; 17
+  f0:	81 e0       	ldi	r24, 0x01	; 1
+  f2:	90 e0       	ldi	r25, 0x00	; 0
+  f4:	02 c0       	rjmp	.+4      	; 0xfa <DIO_SetPinDir+0x68>
+  f6:	88 0f       	add	r24, r24
+  f8:	99 1f       	adc	r25, r25
+  fa:	6a 95       	dec	r22
+  fc:	e2 f7       	brpl	.-8      	; 0xf6 <DIO_SetPinDir+0x64>
+  fe:	82 2b       	or	r24, r18
+ 100:	81 bb       	out	0x11, r24	; 17
+ 102:	08 95       	ret
+ 104:	81 30       	cpi	r24, 0x01	; 1
+ 106:	91 f0       	breq	.+36     	; 0x12c <DIO_SetPinDir+0x9a>
+ 108:	28 f0       	brcs	.+10     	; 0x114 <DIO_SetPinDir+0x82>
+ 10a:	82 30       	cpi	r24, 0x02	; 2
+ 10c:	d9 f0       	breq	.+54     	; 0x144 <DIO_SetPinDir+0xb2>
+ 10e:	83 30       	cpi	r24, 0x03	; 3
+ 110:	29 f1       	breq	.+74     	; 0x15c <DIO_SetPinDir+0xca>
+ 112:	08 95       	ret
+ 114:	2a b3       	in	r18, 0x1a	; 26
+ 116:	81 e0       	ldi	r24, 0x01	; 1
+ 118:	90 e0       	ldi	r25, 0x00	; 0
+ 11a:	02 c0       	rjmp	.+4      	; 0x120 <DIO_SetPinDir+0x8e>
+ 11c:	88 0f       	add	r24, r24
+ 11e:	99 1f       	adc	r25, r25
+ 120:	6a 95       	dec	r22
+ 122:	e2 f7       	brpl	.-8      	; 0x11c <DIO_SetPinDir+0x8a>
+ 124:	80 95       	com	r24
+ 126:	82 23       	and	r24, r18
+ 128:	8a bb       	out	0x1a, r24	; 26
+ 12a:	08 95       	ret
+ 12c:	27 b3       	in	r18, 0x17	; 23
+ 12e:	81 e0       	ldi	r24, 0x01	; 1
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	02 c0       	rjmp	.+4      	; 0x138 <DIO_SetPinDir+0xa6>
+ 134:	88 0f       	add	r24, r24
+ 136:	99 1f       	adc	r25, r25
+ 138:	6a 95       	dec	r22
+ 13a:	e2 f7       	brpl	.-8      	; 0x134 <DIO_SetPinDir+0xa2>
+ 13c:	80 95       	com	r24
+ 13e:	82 23       	and	r24, r18
+ 140:	87 bb       	out	0x17, r24	; 23
+ 142:	08 95       	ret
+ 144:	24 b3       	in	r18, 0x14	; 20
+ 146:	81 e0       	ldi	r24, 0x01	; 1
+ 148:	90 e0       	ldi	r25, 0x00	; 0
+ 14a:	02 c0       	rjmp	.+4      	; 0x150 <DIO_SetPinDir+0xbe>
+ 14c:	88 0f       	add	r24, r24
+ 14e:	99 1f       	adc	r25, r25
+ 150:	6a 95       	dec	r22
+ 152:	e2 f7       	brpl	.-8      	; 0x14c <DIO_SetPinDir+0xba>
+ 154:	80 95       	com	r24
+ 156:	82 23       	and	r24, r18
+ 158:	84 bb       	out	0x14, r24	; 20
+ 15a:	08 95       	ret
+ 15c:	21 b3       	in	r18, 0x11	; 17
+ 15e:	81 e0       	ldi	r24, 0x01	; 1
+ 160:	90 e0       	ldi	r25, 0x00	; 0
+ 162:	02 c0       	rjmp	.+4      	; 0x168 <DIO_SetPinDir+0xd6>
+ 164:	88 0f       	add	r24, r24
+ 166:	99 1f       	adc	r25, r25
+ 168:	6a 95       	dec	r22
+ 16a:	e2 f7       	brpl	.-8      	; 0x164 <DIO_SetPinDir+0xd2>
+ 16c:	80 95       	com	r24
+ 16e:	82 23       	and	r24, r18
+ 170:	81 bb       	out	0x11, r24	; 17
+ 172:	08 95       	ret
+
+00000174 <DIO_WritePin>:
+
+
+
+void DIO_WritePin(uint8 Port ,uint8 Pin, uint8 Val)
+{
+	switch (Val)
+ 174:	44 23       	and	r20, r20
+ 176:	b9 f1       	breq	.+110    	; 0x1e6 <DIO_WritePin+0x72>
+ 178:	41 30       	cpi	r20, 0x01	; 1
+ 17a:	09 f0       	breq	.+2      	; 0x17e <DIO_WritePin+0xa>
+ 17c:	6b c0       	rjmp	.+214    	; 0x254 <DIO_WritePin+0xe0>
+
+
+	case DIO_PIN_HIGH :
+
+
+		switch (Port)
+ 17e:	81 30       	cpi	r24, 0x01	; 1
+ 180:	89 f0       	breq	.+34     	; 0x1a4 <DIO_WritePin+0x30>
+ 182:	28 f0       	brcs	.+10     	; 0x18e <DIO_WritePin+0x1a>
+ 184:	82 30       	cpi	r24, 0x02	; 2
+ 186:	c9 f0       	breq	.+50     	; 0x1ba <DIO_WritePin+0x46>
+ 188:	83 30       	cpi	r24, 0x03	; 3
+ 18a:	11 f1       	breq	.+68     	; 0x1d0 <DIO_WritePin+0x5c>
+ 18c:	08 95       	ret
+		{
+		case DIO_PORTA :
+
+			SET_BIT(PORTA,Pin);
+ 18e:	2b b3       	in	r18, 0x1b	; 27
+ 190:	81 e0       	ldi	r24, 0x01	; 1
+ 192:	90 e0       	ldi	r25, 0x00	; 0
+ 194:	02 c0       	rjmp	.+4      	; 0x19a <DIO_WritePin+0x26>
+ 196:	88 0f       	add	r24, r24
+ 198:	99 1f       	adc	r25, r25
+ 19a:	6a 95       	dec	r22
+ 19c:	e2 f7       	brpl	.-8      	; 0x196 <DIO_WritePin+0x22>
+ 19e:	82 2b       	or	r24, r18
+ 1a0:	8b bb       	out	0x1b, r24	; 27
+
+			break;
+ 1a2:	08 95       	ret
+
+		case DIO_PORTB :
+
+			SET_BIT(PORTB,Pin);
+ 1a4:	28 b3       	in	r18, 0x18	; 24
+ 1a6:	81 e0       	ldi	r24, 0x01	; 1
+ 1a8:	90 e0       	ldi	r25, 0x00	; 0
+ 1aa:	02 c0       	rjmp	.+4      	; 0x1b0 <DIO_WritePin+0x3c>
+ 1ac:	88 0f       	add	r24, r24
+ 1ae:	99 1f       	adc	r25, r25
+ 1b0:	6a 95       	dec	r22
+ 1b2:	e2 f7       	brpl	.-8      	; 0x1ac <DIO_WritePin+0x38>
+ 1b4:	82 2b       	or	r24, r18
+ 1b6:	88 bb       	out	0x18, r24	; 24
+
+			break;
+ 1b8:	08 95       	ret
+
+		case DIO_PORTC :
+
+			SET_BIT(PORTC,Pin);
+ 1ba:	25 b3       	in	r18, 0x15	; 21
+ 1bc:	81 e0       	ldi	r24, 0x01	; 1
+ 1be:	90 e0       	ldi	r25, 0x00	; 0
+ 1c0:	02 c0       	rjmp	.+4      	; 0x1c6 <DIO_WritePin+0x52>
+ 1c2:	88 0f       	add	r24, r24
+ 1c4:	99 1f       	adc	r25, r25
+ 1c6:	6a 95       	dec	r22
+ 1c8:	e2 f7       	brpl	.-8      	; 0x1c2 <DIO_WritePin+0x4e>
+ 1ca:	82 2b       	or	r24, r18
+ 1cc:	85 bb       	out	0x15, r24	; 21
+
+			break;
+ 1ce:	08 95       	ret
+
+		case DIO_PORTD :
+
+			SET_BIT(PORTD,Pin);
+ 1d0:	22 b3       	in	r18, 0x12	; 18
+ 1d2:	81 e0       	ldi	r24, 0x01	; 1
+ 1d4:	90 e0       	ldi	r25, 0x00	; 0
+ 1d6:	02 c0       	rjmp	.+4      	; 0x1dc <DIO_WritePin+0x68>
+ 1d8:	88 0f       	add	r24, r24
+ 1da:	99 1f       	adc	r25, r25
+ 1dc:	6a 95       	dec	r22
+ 1de:	e2 f7       	brpl	.-8      	; 0x1d8 <DIO_WritePin+0x64>
+ 1e0:	82 2b       	or	r24, r18
+ 1e2:	82 bb       	out	0x12, r24	; 18
+
+			break;
+ 1e4:	08 95       	ret
+		break;
+
+		case DIO_PIN_LOW :
+
+
+			switch (Port)
+ 1e6:	81 30       	cpi	r24, 0x01	; 1
+ 1e8:	91 f0       	breq	.+36     	; 0x20e <DIO_WritePin+0x9a>
+ 1ea:	28 f0       	brcs	.+10     	; 0x1f6 <DIO_WritePin+0x82>
+ 1ec:	82 30       	cpi	r24, 0x02	; 2
+ 1ee:	d9 f0       	breq	.+54     	; 0x226 <DIO_WritePin+0xb2>
+ 1f0:	83 30       	cpi	r24, 0x03	; 3
+ 1f2:	29 f1       	breq	.+74     	; 0x23e <DIO_WritePin+0xca>
+ 1f4:	08 95       	ret
+			{
+			case DIO_PORTA :
+
+				CLR_BIT(PORTA,Pin);
+ 1f6:	2b b3       	in	r18, 0x1b	; 27
+ 1f8:	81 e0       	ldi	r24, 0x01	; 1
+ 1fa:	90 e0       	ldi	r25, 0x00	; 0
+ 1fc:	02 c0       	rjmp	.+4      	; 0x202 <DIO_WritePin+0x8e>
+ 1fe:	88 0f       	add	r24, r24
+ 200:	99 1f       	adc	r25, r25
+ 202:	6a 95       	dec	r22
+ 204:	e2 f7       	brpl	.-8      	; 0x1fe <DIO_WritePin+0x8a>
+ 206:	80 95       	com	r24
+ 208:	82 23       	and	r24, r18
+ 20a:	8b bb       	out	0x1b, r24	; 27
+
+				break;
+ 20c:	08 95       	ret
+
+			case DIO_PORTB :
+
+				CLR_BIT(PORTB,Pin);
+ 20e:	28 b3       	in	r18, 0x18	; 24
+ 210:	81 e0       	ldi	r24, 0x01	; 1
+ 212:	90 e0       	ldi	r25, 0x00	; 0
+ 214:	02 c0       	rjmp	.+4      	; 0x21a <DIO_WritePin+0xa6>
+ 216:	88 0f       	add	r24, r24
+ 218:	99 1f       	adc	r25, r25
+ 21a:	6a 95       	dec	r22
+ 21c:	e2 f7       	brpl	.-8      	; 0x216 <DIO_WritePin+0xa2>
+ 21e:	80 95       	com	r24
+ 220:	82 23       	and	r24, r18
+ 222:	88 bb       	out	0x18, r24	; 24
+
+				break;
+ 224:	08 95       	ret
+
+			case DIO_PORTC :
+
+				CLR_BIT(PORTC,Pin);
+ 226:	25 b3       	in	r18, 0x15	; 21
+ 228:	81 e0       	ldi	r24, 0x01	; 1
+ 22a:	90 e0       	ldi	r25, 0x00	; 0
+ 22c:	02 c0       	rjmp	.+4      	; 0x232 <DIO_WritePin+0xbe>
+ 22e:	88 0f       	add	r24, r24
+ 230:	99 1f       	adc	r25, r25
+ 232:	6a 95       	dec	r22
+ 234:	e2 f7       	brpl	.-8      	; 0x22e <DIO_WritePin+0xba>
+ 236:	80 95       	com	r24
+ 238:	82 23       	and	r24, r18
+ 23a:	85 bb       	out	0x15, r24	; 21
+
+				break;
+ 23c:	08 95       	ret
+
+			case DIO_PORTD :
+
+				CLR_BIT(PORTD,Pin);
+ 23e:	22 b3       	in	r18, 0x12	; 18
+ 240:	81 e0       	ldi	r24, 0x01	; 1
+ 242:	90 e0       	ldi	r25, 0x00	; 0
+ 244:	02 c0       	rjmp	.+4      	; 0x24a <DIO_WritePin+0xd6>
+ 246:	88 0f       	add	r24, r24
+ 248:	99 1f       	adc	r25, r25
+ 24a:	6a 95       	dec	r22
+ 24c:	e2 f7       	brpl	.-8      	; 0x246 <DIO_WritePin+0xd2>
+ 24e:	80 95       	com	r24
+ 250:	82 23       	and	r24, r18
+ 252:	82 bb       	out	0x12, r24	; 18
+ 254:	08 95       	ret
+
+00000256 <SET_GlobalInterrupt>:
+void SET_GlobalInterrupt(void)
+{
+	
+	#if    GLOBAL_INTERRUPT == GLOBAL_INTERRUPT_ENABLE
+	
+	SET_BIT(SREG ,7);
+ 256:	8f b7       	in	r24, 0x3f	; 63
+ 258:	80 68       	ori	r24, 0x80	; 128
+ 25a:	8f bf       	out	0x3f, r24	; 63
+ 25c:	08 95       	ret
+
+0000025e <ExternaINT0_Init>:
+}
+
+
+void ExternaINT0_Init(void)
+{
+	SET_GlobalInterrupt();
+ 25e:	0e 94 2b 01 	call	0x256	; 0x256 <SET_GlobalInterrupt>
+	
+	SET_BIT(GICR , EXTERNAL_INT0);// bit 6
+ 262:	8b b7       	in	r24, 0x3b	; 59
+ 264:	80 64       	ori	r24, 0x40	; 64
+ 266:	8b bf       	out	0x3b, r24	; 59
+	CLR_BIT(MCUCR , 0);
+	SET_BIT(MCUCR , 1);
+	
+	#elif  EXTERNAL_INT0_TRIGGER == INT0_TRIGGER_RISING_EDGE
+	
+	SET_BIT(MCUCR , 0);
+ 268:	85 b7       	in	r24, 0x35	; 53
+ 26a:	81 60       	ori	r24, 0x01	; 1
+ 26c:	85 bf       	out	0x35, r24	; 53
+	SET_BIT(MCUCR , 1);
+ 26e:	85 b7       	in	r24, 0x35	; 53
+ 270:	82 60       	ori	r24, 0x02	; 2
+ 272:	85 bf       	out	0x35, r24	; 53
+ 274:	08 95       	ret
+
+00000276 <LCD_WriteCommand>:
+#endif
+	
+}
+
+void LCD_WriteCommand(uint8 cmd)
+{
+ 276:	cf 93       	push	r28
+ 278:	c8 2f       	mov	r28, r24
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_RS_PIN, DIO_PIN_LOW);
+ 27a:	40 e0       	ldi	r20, 0x00	; 0
+ 27c:	61 e0       	ldi	r22, 0x01	; 1
+ 27e:	81 e0       	ldi	r24, 0x01	; 1
+ 280:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_RW_PIN, DIO_PIN_LOW);
+ 284:	40 e0       	ldi	r20, 0x00	; 0
+ 286:	62 e0       	ldi	r22, 0x02	; 2
+ 288:	81 e0       	ldi	r24, 0x01	; 1
+ 28a:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_LOW);
+ 28e:	40 e0       	ldi	r20, 0x00	; 0
+ 290:	63 e0       	ldi	r22, 0x03	; 3
+ 292:	81 e0       	ldi	r24, 0x01	; 1
+ 294:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	
+	PORTA = (cmd & 0xF0) | (PORTA & 0x0F);
+ 298:	8b b3       	in	r24, 0x1b	; 27
+ 29a:	9c 2f       	mov	r25, r28
+ 29c:	90 7f       	andi	r25, 0xF0	; 240
+ 29e:	8f 70       	andi	r24, 0x0F	; 15
+ 2a0:	89 2b       	or	r24, r25
+ 2a2:	8b bb       	out	0x1b, r24	; 27
+	
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_HIGH);
+ 2a4:	41 e0       	ldi	r20, 0x01	; 1
+ 2a6:	63 e0       	ldi	r22, 0x03	; 3
+ 2a8:	81 e0       	ldi	r24, 0x01	; 1
+ 2aa:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2ae:	8f e9       	ldi	r24, 0x9F	; 159
+ 2b0:	9f e0       	ldi	r25, 0x0F	; 15
+ 2b2:	01 97       	sbiw	r24, 0x01	; 1
+ 2b4:	f1 f7       	brne	.-4      	; 0x2b2 <LCD_WriteCommand+0x3c>
+ 2b6:	00 c0       	rjmp	.+0      	; 0x2b8 <LCD_WriteCommand+0x42>
+ 2b8:	00 00       	nop
+	_delay_ms(1);
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_LOW);
+ 2ba:	40 e0       	ldi	r20, 0x00	; 0
+ 2bc:	63 e0       	ldi	r22, 0x03	; 3
+ 2be:	81 e0       	ldi	r24, 0x01	; 1
+ 2c0:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	
+	PORTA = (cmd << 4) | (PORTA & 0x0F);
+ 2c4:	2b b3       	in	r18, 0x1b	; 27
+ 2c6:	30 e1       	ldi	r19, 0x10	; 16
+ 2c8:	c3 9f       	mul	r28, r19
+ 2ca:	c0 01       	movw	r24, r0
+ 2cc:	11 24       	eor	r1, r1
+ 2ce:	92 2f       	mov	r25, r18
+ 2d0:	9f 70       	andi	r25, 0x0F	; 15
+ 2d2:	89 2b       	or	r24, r25
+ 2d4:	8b bb       	out	0x1b, r24	; 27
+	
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_HIGH);
+ 2d6:	41 e0       	ldi	r20, 0x01	; 1
+ 2d8:	63 e0       	ldi	r22, 0x03	; 3
+ 2da:	81 e0       	ldi	r24, 0x01	; 1
+ 2dc:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+ 2e0:	8f e9       	ldi	r24, 0x9F	; 159
+ 2e2:	9f e0       	ldi	r25, 0x0F	; 15
+ 2e4:	01 97       	sbiw	r24, 0x01	; 1
+ 2e6:	f1 f7       	brne	.-4      	; 0x2e4 <LCD_WriteCommand+0x6e>
+ 2e8:	00 c0       	rjmp	.+0      	; 0x2ea <LCD_WriteCommand+0x74>
+ 2ea:	00 00       	nop
+	_delay_ms(1);
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_LOW);
+ 2ec:	40 e0       	ldi	r20, 0x00	; 0
+ 2ee:	63 e0       	ldi	r22, 0x03	; 3
+ 2f0:	81 e0       	ldi	r24, 0x01	; 1
+ 2f2:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+ 2f6:	8f e1       	ldi	r24, 0x1F	; 31
+ 2f8:	9e e4       	ldi	r25, 0x4E	; 78
+ 2fa:	01 97       	sbiw	r24, 0x01	; 1
+ 2fc:	f1 f7       	brne	.-4      	; 0x2fa <LCD_WriteCommand+0x84>
+ 2fe:	00 c0       	rjmp	.+0      	; 0x300 <LCD_WriteCommand+0x8a>
+ 300:	00 00       	nop
+	
+	_delay_ms(5);
+	
+}
+ 302:	cf 91       	pop	r28
+ 304:	08 95       	ret
+
+00000306 <LCD_Init>:
+	
+	_delay_ms(5);
+	
+	#elif LCD_MODE == 4
+	
+		DIO_SetPinDir(LCD_4BIT_CMD_PORT ,LCD_RS_PIN , DIO_PIN_OUTPUT);
+ 306:	41 e0       	ldi	r20, 0x01	; 1
+ 308:	61 e0       	ldi	r22, 0x01	; 1
+ 30a:	81 e0       	ldi	r24, 0x01	; 1
+ 30c:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+		DIO_SetPinDir(LCD_4BIT_CMD_PORT ,LCD_RW_PIN , DIO_PIN_OUTPUT);
+ 310:	41 e0       	ldi	r20, 0x01	; 1
+ 312:	62 e0       	ldi	r22, 0x02	; 2
+ 314:	81 e0       	ldi	r24, 0x01	; 1
+ 316:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+		DIO_SetPinDir(LCD_4BIT_CMD_PORT ,LCD_E_PIN , DIO_PIN_OUTPUT);
+ 31a:	41 e0       	ldi	r20, 0x01	; 1
+ 31c:	63 e0       	ldi	r22, 0x03	; 3
+ 31e:	81 e0       	ldi	r24, 0x01	; 1
+ 320:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+		
+		DIO_SetPinDir(LCD_4BIT_DATA_PORT ,LCD_D4 , DIO_PIN_OUTPUT);
+ 324:	41 e0       	ldi	r20, 0x01	; 1
+ 326:	64 e0       	ldi	r22, 0x04	; 4
+ 328:	80 e0       	ldi	r24, 0x00	; 0
+ 32a:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+		DIO_SetPinDir(LCD_4BIT_DATA_PORT ,LCD_D5 , DIO_PIN_OUTPUT);
+ 32e:	41 e0       	ldi	r20, 0x01	; 1
+ 330:	65 e0       	ldi	r22, 0x05	; 5
+ 332:	80 e0       	ldi	r24, 0x00	; 0
+ 334:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+		DIO_SetPinDir(LCD_4BIT_DATA_PORT ,LCD_D6 , DIO_PIN_OUTPUT);
+ 338:	41 e0       	ldi	r20, 0x01	; 1
+ 33a:	66 e0       	ldi	r22, 0x06	; 6
+ 33c:	80 e0       	ldi	r24, 0x00	; 0
+ 33e:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+		DIO_SetPinDir(LCD_4BIT_DATA_PORT ,LCD_D7 , DIO_PIN_OUTPUT);
+ 342:	41 e0       	ldi	r20, 0x01	; 1
+ 344:	67 e0       	ldi	r22, 0x07	; 7
+ 346:	80 e0       	ldi	r24, 0x00	; 0
+ 348:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+ 34c:	2f ef       	ldi	r18, 0xFF	; 255
+ 34e:	81 ee       	ldi	r24, 0xE1	; 225
+ 350:	94 e0       	ldi	r25, 0x04	; 4
+ 352:	21 50       	subi	r18, 0x01	; 1
+ 354:	80 40       	sbci	r24, 0x00	; 0
+ 356:	90 40       	sbci	r25, 0x00	; 0
+ 358:	e1 f7       	brne	.-8      	; 0x352 <LCD_Init+0x4c>
+ 35a:	00 c0       	rjmp	.+0      	; 0x35c <LCD_Init+0x56>
+ 35c:	00 00       	nop
+		
+		_delay_ms(100);
+		
+		LCD_WriteCommand(0x33);
+ 35e:	83 e3       	ldi	r24, 0x33	; 51
+ 360:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+		LCD_WriteCommand(0x32);
+ 364:	82 e3       	ldi	r24, 0x32	; 50
+ 366:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+		LCD_WriteCommand(0x28);
+ 36a:	88 e2       	ldi	r24, 0x28	; 40
+ 36c:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+		LCD_WriteCommand(0x0C);
+ 370:	8c e0       	ldi	r24, 0x0C	; 12
+ 372:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+        LCD_WriteCommand(0x01);
+ 376:	81 e0       	ldi	r24, 0x01	; 1
+ 378:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+		LCD_WriteCommand(0x06);
+ 37c:	86 e0       	ldi	r24, 0x06	; 6
+ 37e:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+		LCD_WriteCommand(0x02);
+ 382:	82 e0       	ldi	r24, 0x02	; 2
+ 384:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+ 388:	08 95       	ret
+
+0000038a <LCD_WriteChar>:
+	
+}
+
+
+void LCD_WriteChar(uint8 data)
+{
+ 38a:	cf 93       	push	r28
+ 38c:	c8 2f       	mov	r28, r24
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_RS_PIN, DIO_PIN_HIGH);
+ 38e:	41 e0       	ldi	r20, 0x01	; 1
+ 390:	61 e0       	ldi	r22, 0x01	; 1
+ 392:	81 e0       	ldi	r24, 0x01	; 1
+ 394:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_RW_PIN, DIO_PIN_LOW);
+ 398:	40 e0       	ldi	r20, 0x00	; 0
+ 39a:	62 e0       	ldi	r22, 0x02	; 2
+ 39c:	81 e0       	ldi	r24, 0x01	; 1
+ 39e:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_LOW);
+ 3a2:	40 e0       	ldi	r20, 0x00	; 0
+ 3a4:	63 e0       	ldi	r22, 0x03	; 3
+ 3a6:	81 e0       	ldi	r24, 0x01	; 1
+ 3a8:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	
+	PORTA = (data & 0xF0) ;
+ 3ac:	8c 2f       	mov	r24, r28
+ 3ae:	80 7f       	andi	r24, 0xF0	; 240
+ 3b0:	8b bb       	out	0x1b, r24	; 27
+	
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_HIGH);
+ 3b2:	41 e0       	ldi	r20, 0x01	; 1
+ 3b4:	63 e0       	ldi	r22, 0x03	; 3
+ 3b6:	81 e0       	ldi	r24, 0x01	; 1
+ 3b8:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+ 3bc:	8f e9       	ldi	r24, 0x9F	; 159
+ 3be:	9f e0       	ldi	r25, 0x0F	; 15
+ 3c0:	01 97       	sbiw	r24, 0x01	; 1
+ 3c2:	f1 f7       	brne	.-4      	; 0x3c0 <LCD_WriteChar+0x36>
+ 3c4:	00 c0       	rjmp	.+0      	; 0x3c6 <LCD_WriteChar+0x3c>
+ 3c6:	00 00       	nop
+	_delay_ms(1);
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_LOW);
+ 3c8:	40 e0       	ldi	r20, 0x00	; 0
+ 3ca:	63 e0       	ldi	r22, 0x03	; 3
+ 3cc:	81 e0       	ldi	r24, 0x01	; 1
+ 3ce:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+	
+	PORTA = (data << 4) ;
+ 3d2:	c2 95       	swap	r28
+ 3d4:	c0 7f       	andi	r28, 0xF0	; 240
+ 3d6:	cb bb       	out	0x1b, r28	; 27
+	
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_HIGH);
+ 3d8:	41 e0       	ldi	r20, 0x01	; 1
+ 3da:	63 e0       	ldi	r22, 0x03	; 3
+ 3dc:	81 e0       	ldi	r24, 0x01	; 1
+ 3de:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+ 3e2:	8f e9       	ldi	r24, 0x9F	; 159
+ 3e4:	9f e0       	ldi	r25, 0x0F	; 15
+ 3e6:	01 97       	sbiw	r24, 0x01	; 1
+ 3e8:	f1 f7       	brne	.-4      	; 0x3e6 <LCD_WriteChar+0x5c>
+ 3ea:	00 c0       	rjmp	.+0      	; 0x3ec <LCD_WriteChar+0x62>
+ 3ec:	00 00       	nop
+	_delay_ms(1);
+	DIO_WritePin(LCD_4BIT_CMD_PORT ,LCD_E_PIN, DIO_PIN_LOW);
+ 3ee:	40 e0       	ldi	r20, 0x00	; 0
+ 3f0:	63 e0       	ldi	r22, 0x03	; 3
+ 3f2:	81 e0       	ldi	r24, 0x01	; 1
+ 3f4:	0e 94 ba 00 	call	0x174	; 0x174 <DIO_WritePin>
+ 3f8:	8f e1       	ldi	r24, 0x1F	; 31
+ 3fa:	9e e4       	ldi	r25, 0x4E	; 78
+ 3fc:	01 97       	sbiw	r24, 0x01	; 1
+ 3fe:	f1 f7       	brne	.-4      	; 0x3fc <LCD_WriteChar+0x72>
+ 400:	00 c0       	rjmp	.+0      	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
+ 402:	00 00       	nop
+	
+	_delay_ms(5);
+}
+ 404:	cf 91       	pop	r28
+ 406:	08 95       	ret
+
+00000408 <LCD_WriteString>:
+
+void LCD_WriteString(uint8 str[])
+{
+ 408:	0f 93       	push	r16
+ 40a:	1f 93       	push	r17
+ 40c:	cf 93       	push	r28
+ 40e:	fc 01       	movw	r30, r24
+	uint8 i = 0;
+	
+	while(str[i] != '\0')
+ 410:	80 81       	ld	r24, Z
+ 412:	88 23       	and	r24, r24
+ 414:	59 f0       	breq	.+22     	; 0x42c <LCD_WriteString+0x24>
+ 416:	8f 01       	movw	r16, r30
+ 418:	c0 e0       	ldi	r28, 0x00	; 0
+	{
+		LCD_WriteChar(str[i]);
+ 41a:	0e 94 c5 01 	call	0x38a	; 0x38a <LCD_WriteChar>
+		i++;
+ 41e:	cf 5f       	subi	r28, 0xFF	; 255
+
+void LCD_WriteString(uint8 str[])
+{
+	uint8 i = 0;
+	
+	while(str[i] != '\0')
+ 420:	f8 01       	movw	r30, r16
+ 422:	ec 0f       	add	r30, r28
+ 424:	f1 1d       	adc	r31, r1
+ 426:	80 81       	ld	r24, Z
+ 428:	81 11       	cpse	r24, r1
+ 42a:	f7 cf       	rjmp	.-18     	; 0x41a <LCD_WriteString+0x12>
+	{
+		LCD_WriteChar(str[i]);
+		i++;
+	}
+}
+ 42c:	cf 91       	pop	r28
+ 42e:	1f 91       	pop	r17
+ 430:	0f 91       	pop	r16
+ 432:	08 95       	ret
+
+00000434 <LCD_GoTo>:
+
+void LCD_GoTo(uint8 row, uint8 col)
+{
+ 434:	cf 93       	push	r28
+ 436:	df 93       	push	r29
+ 438:	00 d0       	rcall	.+0      	; 0x43a <LCD_GoTo+0x6>
+ 43a:	cd b7       	in	r28, 0x3d	; 61
+ 43c:	de b7       	in	r29, 0x3e	; 62
+	uint8 pos[2] = {0x80 , 0xC0};
+ 43e:	90 e8       	ldi	r25, 0x80	; 128
+ 440:	99 83       	std	Y+1, r25	; 0x01
+ 442:	90 ec       	ldi	r25, 0xC0	; 192
+ 444:	9a 83       	std	Y+2, r25	; 0x02
+		
+	LCD_WriteCommand(pos[row]+col);
+ 446:	fe 01       	movw	r30, r28
+ 448:	e8 0f       	add	r30, r24
+ 44a:	f1 1d       	adc	r31, r1
+ 44c:	81 81       	ldd	r24, Z+1	; 0x01
+ 44e:	86 0f       	add	r24, r22
+ 450:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+		
+}
+ 454:	0f 90       	pop	r0
+ 456:	0f 90       	pop	r0
+ 458:	df 91       	pop	r29
+ 45a:	cf 91       	pop	r28
+ 45c:	08 95       	ret
+
+0000045e <LCD_Clear>:
+
+
+
+void LCD_Clear(void)
+{
+	LCD_WriteCommand(0x01);
+ 45e:	81 e0       	ldi	r24, 0x01	; 1
+ 460:	0e 94 3b 01 	call	0x276	; 0x276 <LCD_WriteCommand>
+ 464:	08 95       	ret
+
+00000466 <main>:
+extern tx; 
+extern rx;
+
+int main(void)
+{
+sei();
+ 466:	78 94       	sei
+	LCD_Init();
+ 468:	0e 94 83 01 	call	0x306	; 0x306 <LCD_Init>
+	SPI_Master_Init();
+ 46c:	0e 94 e3 03 	call	0x7c6	; 0x7c6 <SPI_Master_Init>
+	UART_Init();
+ 470:	0e 94 c8 04 	call	0x990	; 0x990 <UART_Init>
+	ExternaINT0_Init();
+ 474:	0e 94 2f 01 	call	0x25e	; 0x25e <ExternaINT0_Init>
+	
+	
+	LCD_GoTo(0,0);
+ 478:	60 e0       	ldi	r22, 0x00	; 0
+ 47a:	80 e0       	ldi	r24, 0x00	; 0
+ 47c:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+	LCD_WriteString(" welcome sir  ");
+ 480:	80 e6       	ldi	r24, 0x60	; 96
+ 482:	90 e0       	ldi	r25, 0x00	; 0
+ 484:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+	LCD_GoTo(1,0);
+ 488:	60 e0       	ldi	r22, 0x00	; 0
+ 48a:	81 e0       	ldi	r24, 0x01	; 1
+ 48c:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+	LCD_WriteString("save password");
+ 490:	8f e6       	ldi	r24, 0x6F	; 111
+ 492:	90 e0       	ldi	r25, 0x00	; 0
+ 494:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+	
+	
+    while (1) 
+    {
+		tx=0;
+ 498:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <__bss_end>
+ 49c:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <tx>
+		rx = SPI_TranSiver(tx);
+ 4a0:	80 e0       	ldi	r24, 0x00	; 0
+ 4a2:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+ 4a6:	90 e0       	ldi	r25, 0x00	; 0
+ 4a8:	90 93 51 02 	sts	0x0251, r25	; 0x800251 <tx>
+ 4ac:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <rx>
+		
+		PASSWORD_FUN();
+ 4b0:	0e 94 e5 02 	call	0x5ca	; 0x5ca <PASSWORD_FUN>
+ 4b4:	f1 cf       	rjmp	.-30     	; 0x498 <main+0x32>
+
+000004b6 <__vector_1>:
+		
+}
+}
+
+ISR(INT0_vect)
+{
+ 4b6:	1f 92       	push	r1
+ 4b8:	0f 92       	push	r0
+ 4ba:	0f b6       	in	r0, 0x3f	; 63
+ 4bc:	0f 92       	push	r0
+ 4be:	11 24       	eor	r1, r1
+	cli();
+ 4c0:	f8 94       	cli
+	main();
+ 4c2:	0e 94 33 02 	call	0x466	; 0x466 <main>
+
+000004c6 <isr_bluotooth>:
+	void isr_bluotooth(void)
+	{
+		uint8 i=0;
+		uint8 tx=0;
+		
+			SPI_TranSiver(tx);
+ 4c6:	80 e0       	ldi	r24, 0x00	; 0
+ 4c8:	90 e0       	ldi	r25, 0x00	; 0
+ 4ca:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+			
+			spi_bluotooth();
+ 4ce:	0e 94 1f 04 	call	0x83e	; 0x83e <spi_bluotooth>
+ 4d2:	08 95       	ret
+
+000004d4 <CHACKPASS_bluotooth_FUN>:
+	 }   // generc adc 
+		
+ }
+ 
+ void CHACKPASS_bluotooth_FUN(void)
+ {
+ 4d4:	0f 93       	push	r16
+ 4d6:	1f 93       	push	r17
+ 4d8:	cf 93       	push	r28
+ 4da:	df 93       	push	r29
+	 
+	 LCD_GoTo(1,0);
+ 4dc:	60 e0       	ldi	r22, 0x00	; 0
+ 4de:	81 e0       	ldi	r24, 0x01	; 1
+ 4e0:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+	 LCD_WriteString("enter the pass = ");
+ 4e4:	8d e7       	ldi	r24, 0x7D	; 125
+ 4e6:	90 e0       	ldi	r25, 0x00	; 0
+ 4e8:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+	 UART_SendString("enter the password = "); //start from location 14 in lcd ro 2.
+ 4ec:	8f e8       	ldi	r24, 0x8F	; 143
+ 4ee:	90 e0       	ldi	r25, 0x00	; 0
+ 4f0:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+		 
+		 val=0;
+		 val = UART_ReceiveChar();
+		 
+		 if (val && i==0){load[i]=val;i++;val=0;}
+		 if (val && i==1){load[i]=val;i++;val=0;}
+ 4f4:	c8 e4       	ldi	r28, 0x48	; 72
+ 4f6:	d2 e0       	ldi	r29, 0x02	; 2
+ 4f8:	02 e0       	ldi	r16, 0x02	; 2
+	 while(1){
+		 
+		 val=0;
+		 val = UART_ReceiveChar();
+		 
+		 if (val && i==0){load[i]=val;i++;val=0;}
+ 4fa:	11 e0       	ldi	r17, 0x01	; 1
+	 LCD_WriteString("enter the pass = ");
+	 UART_SendString("enter the password = "); //start from location 14 in lcd ro 2.
+	 
+	 while(1){
+		 
+		 val=0;
+ 4fc:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <val>
+		 val = UART_ReceiveChar();
+ 500:	0e 94 f5 04 	call	0x9ea	; 0x9ea <UART_ReceiveChar>
+		 
+		 if (val && i==0){load[i]=val;i++;val=0;}
+ 504:	88 23       	and	r24, r24
+ 506:	d1 f3       	breq	.-12     	; 0x4fc <CHACKPASS_bluotooth_FUN+0x28>
+ 508:	90 91 4f 02 	lds	r25, 0x024F	; 0x80024f <i>
+ 50c:	91 11       	cpse	r25, r1
+ 50e:	4f c0       	rjmp	.+158    	; 0x5ae <CHACKPASS_bluotooth_FUN+0xda>
+ 510:	88 83       	st	Y, r24
+ 512:	10 93 4f 02 	sts	0x024F, r17	; 0x80024f <i>
+ 516:	f2 cf       	rjmp	.-28     	; 0x4fc <CHACKPASS_bluotooth_FUN+0x28>
+		 if (val && i==1){load[i]=val;i++;val=0;}
+ 518:	89 83       	std	Y+1, r24	; 0x01
+ 51a:	00 93 4f 02 	sts	0x024F, r16	; 0x80024f <i>
+ 51e:	ee cf       	rjmp	.-36     	; 0x4fc <CHACKPASS_bluotooth_FUN+0x28>
+		 if (val && i==2){load[i]=val;i=0;val=0;break;}
+ 520:	80 93 4a 02 	sts	0x024A, r24	; 0x80024a <__data_end+0x2>
+ 524:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <i>
+ 528:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <val>
+ 52c:	80 e0       	ldi	r24, 0x00	; 0
+	 
+	 
+	 uint8 s=0,l=0;
+	 for(i=0;i<3;i++)
+	 {
+		 s=save[i];l=load[i];
+ 52e:	90 e0       	ldi	r25, 0x00	; 0
+ 530:	fc 01       	movw	r30, r24
+ 532:	e5 5b       	subi	r30, 0xB5	; 181
+ 534:	fd 4f       	sbci	r31, 0xFD	; 253
+ 536:	d0 81       	ld	r29, Z
+ 538:	fc 01       	movw	r30, r24
+ 53a:	e8 5b       	subi	r30, 0xB8	; 184
+ 53c:	fd 4f       	sbci	r31, 0xFD	; 253
+ 53e:	c0 81       	ld	r28, Z
+		 if (s!=l)
+ 540:	dc 17       	cp	r29, r28
+ 542:	b1 f0       	breq	.+44     	; 0x570 <CHACKPASS_bluotooth_FUN+0x9c>
+		 {
+			 
+			 UART_SendString(" error password ");
+ 544:	85 ea       	ldi	r24, 0xA5	; 165
+ 546:	90 e0       	ldi	r25, 0x00	; 0
+ 548:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+			 LCD_GoTo(1,0);
+ 54c:	60 e0       	ldi	r22, 0x00	; 0
+ 54e:	81 e0       	ldi	r24, 0x01	; 1
+ 550:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+			 LCD_WriteString("wait 1s to enter");
+ 554:	86 eb       	ldi	r24, 0xB6	; 182
+ 556:	90 e0       	ldi	r25, 0x00	; 0
+ 558:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 55c:	87 ea       	ldi	r24, 0xA7	; 167
+ 55e:	91 e6       	ldi	r25, 0x61	; 97
+ 560:	01 97       	sbiw	r24, 0x01	; 1
+ 562:	f1 f7       	brne	.-4      	; 0x560 <CHACKPASS_bluotooth_FUN+0x8c>
+ 564:	00 c0       	rjmp	.+0      	; 0x566 <CHACKPASS_bluotooth_FUN+0x92>
+ 566:	00 00       	nop
+			 _delay_ms(100);
+			 i=0;
+ 568:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <i>
+			 CHACKPASS_bluotooth_FUN();
+ 56c:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <CHACKPASS_bluotooth_FUN>
+		 if (val && i==2){load[i]=val;i=0;val=0;break;}
+	 }
+	 
+	 
+	 uint8 s=0,l=0;
+	 for(i=0;i<3;i++)
+ 570:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <i>
+ 574:	8f 5f       	subi	r24, 0xFF	; 255
+ 576:	80 93 4f 02 	sts	0x024F, r24	; 0x80024f <i>
+ 57a:	83 30       	cpi	r24, 0x03	; 3
+ 57c:	c0 f2       	brcs	.-80     	; 0x52e <CHACKPASS_bluotooth_FUN+0x5a>
+			 _delay_ms(100);
+			 i=0;
+			 CHACKPASS_bluotooth_FUN();
+		 }
+	 }
+	 if (s==l)       {
+ 57e:	dc 13       	cpse	r29, r28
+ 580:	1f c0       	rjmp	.+62     	; 0x5c0 <CHACKPASS_bluotooth_FUN+0xec>
+		 LCD_GoTo(1,0);
+ 582:	60 e0       	ldi	r22, 0x00	; 0
+ 584:	81 e0       	ldi	r24, 0x01	; 1
+ 586:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+		 LCD_WriteString("password correct");
+ 58a:	87 ec       	ldi	r24, 0xC7	; 199
+ 58c:	90 e0       	ldi	r25, 0x00	; 0
+ 58e:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 592:	9f e3       	ldi	r25, 0x3F	; 63
+ 594:	2d e0       	ldi	r18, 0x0D	; 13
+ 596:	83 e0       	ldi	r24, 0x03	; 3
+ 598:	91 50       	subi	r25, 0x01	; 1
+ 59a:	20 40       	sbci	r18, 0x00	; 0
+ 59c:	80 40       	sbci	r24, 0x00	; 0
+ 59e:	e1 f7       	brne	.-8      	; 0x598 <CHACKPASS_bluotooth_FUN+0xc4>
+ 5a0:	00 c0       	rjmp	.+0      	; 0x5a2 <CHACKPASS_bluotooth_FUN+0xce>
+ 5a2:	00 00       	nop
+		 
+		 _delay_ms(1000);
+		 i=0;
+ 5a4:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <i>
+	 isr_bluotooth(); }   // generc adc
+ 5a8:	0e 94 63 02 	call	0x4c6	; 0x4c6 <isr_bluotooth>
+	 
+ }
+ 5ac:	09 c0       	rjmp	.+18     	; 0x5c0 <CHACKPASS_bluotooth_FUN+0xec>
+		 
+		 val=0;
+		 val = UART_ReceiveChar();
+		 
+		 if (val && i==0){load[i]=val;i++;val=0;}
+		 if (val && i==1){load[i]=val;i++;val=0;}
+ 5ae:	91 30       	cpi	r25, 0x01	; 1
+ 5b0:	09 f4       	brne	.+2      	; 0x5b4 <CHACKPASS_bluotooth_FUN+0xe0>
+ 5b2:	b2 cf       	rjmp	.-156    	; 0x518 <CHACKPASS_bluotooth_FUN+0x44>
+		 if (val && i==2){load[i]=val;i=0;val=0;break;}
+ 5b4:	90 91 4f 02 	lds	r25, 0x024F	; 0x80024f <i>
+ 5b8:	92 30       	cpi	r25, 0x02	; 2
+ 5ba:	09 f0       	breq	.+2      	; 0x5be <CHACKPASS_bluotooth_FUN+0xea>
+ 5bc:	9f cf       	rjmp	.-194    	; 0x4fc <CHACKPASS_bluotooth_FUN+0x28>
+ 5be:	b0 cf       	rjmp	.-160    	; 0x520 <CHACKPASS_bluotooth_FUN+0x4c>
+		 
+		 _delay_ms(1000);
+		 i=0;
+	 isr_bluotooth(); }   // generc adc
+	 
+ }
+ 5c0:	df 91       	pop	r29
+ 5c2:	cf 91       	pop	r28
+ 5c4:	1f 91       	pop	r17
+ 5c6:	0f 91       	pop	r16
+ 5c8:	08 95       	ret
+
+000005ca <PASSWORD_FUN>:
+extern tx;
+void PASSWORD_FUN(void)
+{
+		
+
+UART_SendString("save the password = "); //start from location 14 in lcd ro 2.
+ 5ca:	88 ed       	ldi	r24, 0xD8	; 216
+ 5cc:	90 e0       	ldi	r25, 0x00	; 0
+ 5ce:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+
+while(1){
+		
+		val = UART_ReceiveChar();
+ 5d2:	0e 94 f5 04 	call	0x9ea	; 0x9ea <UART_ReceiveChar>
+ 5d6:	80 93 4e 02 	sts	0x024E, r24	; 0x80024e <val>
+		if(val){save[i]=val; i++; }
+ 5da:	88 23       	and	r24, r24
+ 5dc:	51 f0       	breq	.+20     	; 0x5f2 <PASSWORD_FUN+0x28>
+ 5de:	90 91 4f 02 	lds	r25, 0x024F	; 0x80024f <i>
+ 5e2:	e9 2f       	mov	r30, r25
+ 5e4:	f0 e0       	ldi	r31, 0x00	; 0
+ 5e6:	e5 5b       	subi	r30, 0xB5	; 181
+ 5e8:	fd 4f       	sbci	r31, 0xFD	; 253
+ 5ea:	80 83       	st	Z, r24
+ 5ec:	9f 5f       	subi	r25, 0xFF	; 255
+ 5ee:	90 93 4f 02 	sts	0x024F, r25	; 0x80024f <i>
+        if (i==3){i=0;break;}
+ 5f2:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <i>
+ 5f6:	83 30       	cpi	r24, 0x03	; 3
+ 5f8:	61 f7       	brne	.-40     	; 0x5d2 <PASSWORD_FUN+0x8>
+ 5fa:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <i>
+		}
+			
+
+//CHACKPASS_FUN();	
+CHACKPASS_bluotooth_FUN();
+ 5fe:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <CHACKPASS_bluotooth_FUN>
+ 602:	08 95       	ret
+
+00000604 <TEMP_FUN>:
+	void TEMP_FUN(void)
+	{
+		
+		uint8 tx;
+		//UART_SendString("to reset click c");
+		LCD_Clear();
+ 604:	0e 94 2f 02 	call	0x45e	; 0x45e <LCD_Clear>
+		
+		while(1){
+		
+		LCD_GoTo(0,0);
+ 608:	60 e0       	ldi	r22, 0x00	; 0
+ 60a:	80 e0       	ldi	r24, 0x00	; 0
+ 60c:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+		LCD_WriteString("     welcome    ");
+ 610:	8d ee       	ldi	r24, 0xED	; 237
+ 612:	90 e0       	ldi	r25, 0x00	; 0
+ 614:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+		
+		tx= UART_ReceiveChar();
+ 618:	0e 94 f5 04 	call	0x9ea	; 0x9ea <UART_ReceiveChar>
+ 61c:	c8 2f       	mov	r28, r24
+		
+		//if (rx=='10'){ CHACKPASS_bluotooth_FUN();}
+		//if (rx=='0'){ TEMP_FUN();}
+			
+		if (tx=='1'){LCD_GoTo(1,0);LCD_WriteString("st of kit (nice)");spi_fun1();}
+ 61e:	81 33       	cpi	r24, 0x31	; 49
+ 620:	59 f4       	brne	.+22     	; 0x638 <TEMP_FUN+0x34>
+ 622:	60 e0       	ldi	r22, 0x00	; 0
+ 624:	81 e0       	ldi	r24, 0x01	; 1
+ 626:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+ 62a:	8e ef       	ldi	r24, 0xFE	; 254
+ 62c:	90 e0       	ldi	r25, 0x00	; 0
+ 62e:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 632:	0e 94 ff 03 	call	0x7fe	; 0x7fe <spi_fun1>
+ 636:	1a c0       	rjmp	.+52     	; 0x66c <TEMP_FUN+0x68>
+		if (tx=='2'){LCD_GoTo(1,0);LCD_WriteString("st of kit (good)");spi_fun2();}	
+ 638:	82 33       	cpi	r24, 0x32	; 50
+ 63a:	59 f4       	brne	.+22     	; 0x652 <TEMP_FUN+0x4e>
+ 63c:	60 e0       	ldi	r22, 0x00	; 0
+ 63e:	81 e0       	ldi	r24, 0x01	; 1
+ 640:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+ 644:	8f e0       	ldi	r24, 0x0F	; 15
+ 646:	91 e0       	ldi	r25, 0x01	; 1
+ 648:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 64c:	0e 94 07 04 	call	0x80e	; 0x80e <spi_fun2>
+ 650:	1a c0       	rjmp	.+52     	; 0x686 <TEMP_FUN+0x82>
+		if (tx=='3'){LCD_GoTo(1,0);LCD_WriteString("open the win now");spi_fun3();}
+ 652:	83 33       	cpi	r24, 0x33	; 51
+ 654:	59 f4       	brne	.+22     	; 0x66c <TEMP_FUN+0x68>
+ 656:	60 e0       	ldi	r22, 0x00	; 0
+ 658:	81 e0       	ldi	r24, 0x01	; 1
+ 65a:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+ 65e:	80 e2       	ldi	r24, 0x20	; 32
+ 660:	91 e0       	ldi	r25, 0x01	; 1
+ 662:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 666:	0e 94 0f 04 	call	0x81e	; 0x81e <spi_fun3>
+ 66a:	19 c0       	rjmp	.+50     	; 0x69e <TEMP_FUN+0x9a>
+		if (tx=='4'){LCD_GoTo(1,0);LCD_WriteString(" Fire alarm in k");spi_fun4();}
+ 66c:	c4 33       	cpi	r28, 0x34	; 52
+ 66e:	59 f4       	brne	.+22     	; 0x686 <TEMP_FUN+0x82>
+ 670:	60 e0       	ldi	r22, 0x00	; 0
+ 672:	81 e0       	ldi	r24, 0x01	; 1
+ 674:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+ 678:	81 e3       	ldi	r24, 0x31	; 49
+ 67a:	91 e0       	ldi	r25, 0x01	; 1
+ 67c:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 680:	0e 94 17 04 	call	0x82e	; 0x82e <spi_fun4>
+ 684:	0c c0       	rjmp	.+24     	; 0x69e <TEMP_FUN+0x9a>
+	    if (tx=='0'){LCD_GoTo(1,0);LCD_WriteString(" Manual control ");CHACKPASS_bluotooth_FUN();}
+ 686:	c0 33       	cpi	r28, 0x30	; 48
+ 688:	51 f4       	brne	.+20     	; 0x69e <TEMP_FUN+0x9a>
+ 68a:	60 e0       	ldi	r22, 0x00	; 0
+ 68c:	81 e0       	ldi	r24, 0x01	; 1
+ 68e:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+ 692:	82 e4       	ldi	r24, 0x42	; 66
+ 694:	91 e0       	ldi	r25, 0x01	; 1
+ 696:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 69a:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <CHACKPASS_bluotooth_FUN>
+		
+		val=0;
+ 69e:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <val>
+ 6a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 6a4:	91 e6       	ldi	r25, 0x61	; 97
+ 6a6:	01 97       	sbiw	r24, 0x01	; 1
+ 6a8:	f1 f7       	brne	.-4      	; 0x6a6 <TEMP_FUN+0xa2>
+ 6aa:	00 c0       	rjmp	.+0      	; 0x6ac <TEMP_FUN+0xa8>
+ 6ac:	00 00       	nop
+ 6ae:	ac cf       	rjmp	.-168    	; 0x608 <TEMP_FUN+0x4>
+
+000006b0 <CHACKPASS_FUN>:
+//CHACKPASS_FUN();	
+CHACKPASS_bluotooth_FUN();
+		}
+		
+void CHACKPASS_FUN(void)
+{
+ 6b0:	0f 93       	push	r16
+ 6b2:	1f 93       	push	r17
+ 6b4:	cf 93       	push	r28
+ 6b6:	df 93       	push	r29
+	
+LCD_GoTo(1,0);
+ 6b8:	60 e0       	ldi	r22, 0x00	; 0
+ 6ba:	81 e0       	ldi	r24, 0x01	; 1
+ 6bc:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+LCD_WriteString("enter the pass = ");
+ 6c0:	8d e7       	ldi	r24, 0x7D	; 125
+ 6c2:	90 e0       	ldi	r25, 0x00	; 0
+ 6c4:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+UART_SendString("enter the password = "); //start from location 14 in lcd ro 2.		
+ 6c8:	8f e8       	ldi	r24, 0x8F	; 143
+ 6ca:	90 e0       	ldi	r25, 0x00	; 0
+ 6cc:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+	
+    val=0;
+    val = UART_ReceiveChar();
+	
+	if (val && i==0){load[i]=val;i++;val=0;}
+	  if (val && i==1){load[i]=val;i++;val=0;}
+ 6d0:	c8 e4       	ldi	r28, 0x48	; 72
+ 6d2:	d2 e0       	ldi	r29, 0x02	; 2
+ 6d4:	02 e0       	ldi	r16, 0x02	; 2
+while(1){
+	
+    val=0;
+    val = UART_ReceiveChar();
+	
+	if (val && i==0){load[i]=val;i++;val=0;}
+ 6d6:	11 e0       	ldi	r17, 0x01	; 1
+LCD_WriteString("enter the pass = ");
+UART_SendString("enter the password = "); //start from location 14 in lcd ro 2.		
+		
+while(1){
+	
+    val=0;
+ 6d8:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <val>
+    val = UART_ReceiveChar();
+ 6dc:	0e 94 f5 04 	call	0x9ea	; 0x9ea <UART_ReceiveChar>
+	
+	if (val && i==0){load[i]=val;i++;val=0;}
+ 6e0:	88 23       	and	r24, r24
+ 6e2:	d1 f3       	breq	.-12     	; 0x6d8 <CHACKPASS_FUN+0x28>
+ 6e4:	90 91 4f 02 	lds	r25, 0x024F	; 0x80024f <i>
+ 6e8:	91 11       	cpse	r25, r1
+ 6ea:	5f c0       	rjmp	.+190    	; 0x7aa <CHACKPASS_FUN+0xfa>
+ 6ec:	88 83       	st	Y, r24
+ 6ee:	10 93 4f 02 	sts	0x024F, r17	; 0x80024f <i>
+ 6f2:	f2 cf       	rjmp	.-28     	; 0x6d8 <CHACKPASS_FUN+0x28>
+	  if (val && i==1){load[i]=val;i++;val=0;}
+ 6f4:	89 83       	std	Y+1, r24	; 0x01
+ 6f6:	00 93 4f 02 	sts	0x024F, r16	; 0x80024f <i>
+ 6fa:	ee cf       	rjmp	.-36     	; 0x6d8 <CHACKPASS_FUN+0x28>
+		if (val && i==2){load[i]=val;i=0;val=0;break;}
+ 6fc:	80 93 4a 02 	sts	0x024A, r24	; 0x80024a <__data_end+0x2>
+ 700:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <i>
+ 704:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <val>
+ 708:	80 e0       	ldi	r24, 0x00	; 0
+		
+	
+	uint8 s=0,l=0;
+	for(i=0;i<3;i++)
+	{
+		s=save[i];l=load[i];
+ 70a:	90 e0       	ldi	r25, 0x00	; 0
+ 70c:	fc 01       	movw	r30, r24
+ 70e:	e5 5b       	subi	r30, 0xB5	; 181
+ 710:	fd 4f       	sbci	r31, 0xFD	; 253
+ 712:	d0 81       	ld	r29, Z
+ 714:	fc 01       	movw	r30, r24
+ 716:	e8 5b       	subi	r30, 0xB8	; 184
+ 718:	fd 4f       	sbci	r31, 0xFD	; 253
+ 71a:	c0 81       	ld	r28, Z
+		if (s!=l)
+ 71c:	dc 17       	cp	r29, r28
+ 71e:	b1 f0       	breq	.+44     	; 0x74c <CHACKPASS_FUN+0x9c>
+		{
+			
+			UART_SendString(" error password ");
+ 720:	85 ea       	ldi	r24, 0xA5	; 165
+ 722:	90 e0       	ldi	r25, 0x00	; 0
+ 724:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+			LCD_GoTo(1,0);
+ 728:	60 e0       	ldi	r22, 0x00	; 0
+ 72a:	81 e0       	ldi	r24, 0x01	; 1
+ 72c:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+			LCD_WriteString("wait 1s to enter");
+ 730:	86 eb       	ldi	r24, 0xB6	; 182
+ 732:	90 e0       	ldi	r25, 0x00	; 0
+ 734:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 738:	87 ea       	ldi	r24, 0xA7	; 167
+ 73a:	91 e6       	ldi	r25, 0x61	; 97
+ 73c:	01 97       	sbiw	r24, 0x01	; 1
+ 73e:	f1 f7       	brne	.-4      	; 0x73c <CHACKPASS_FUN+0x8c>
+ 740:	00 c0       	rjmp	.+0      	; 0x742 <CHACKPASS_FUN+0x92>
+ 742:	00 00       	nop
+			_delay_ms(100);
+			i=0;
+ 744:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <i>
+			CHACKPASS_FUN();
+ 748:	0e 94 58 03 	call	0x6b0	; 0x6b0 <CHACKPASS_FUN>
+		if (val && i==2){load[i]=val;i=0;val=0;break;}
+		}
+		
+	
+	uint8 s=0,l=0;
+	for(i=0;i<3;i++)
+ 74c:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <i>
+ 750:	8f 5f       	subi	r24, 0xFF	; 255
+ 752:	80 93 4f 02 	sts	0x024F, r24	; 0x80024f <i>
+ 756:	83 30       	cpi	r24, 0x03	; 3
+ 758:	c0 f2       	brcs	.-80     	; 0x70a <CHACKPASS_FUN+0x5a>
+			_delay_ms(100);
+			i=0;
+			CHACKPASS_FUN();
+		}
+	}
+	if (s==l)       {
+ 75a:	dc 13       	cpse	r29, r28
+ 75c:	2f c0       	rjmp	.+94     	; 0x7bc <CHACKPASS_FUN+0x10c>
+		             LCD_GoTo(1,0);
+ 75e:	60 e0       	ldi	r22, 0x00	; 0
+ 760:	81 e0       	ldi	r24, 0x01	; 1
+ 762:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+		             LCD_WriteString("password correct");
+ 766:	87 ec       	ldi	r24, 0xC7	; 199
+ 768:	90 e0       	ldi	r25, 0x00	; 0
+ 76a:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 76e:	9f e3       	ldi	r25, 0x3F	; 63
+ 770:	2d e0       	ldi	r18, 0x0D	; 13
+ 772:	83 e0       	ldi	r24, 0x03	; 3
+ 774:	91 50       	subi	r25, 0x01	; 1
+ 776:	20 40       	sbci	r18, 0x00	; 0
+ 778:	80 40       	sbci	r24, 0x00	; 0
+ 77a:	e1 f7       	brne	.-8      	; 0x774 <CHACKPASS_FUN+0xc4>
+ 77c:	00 c0       	rjmp	.+0      	; 0x77e <CHACKPASS_FUN+0xce>
+ 77e:	00 00       	nop
+		             _delay_ms(1000);
+					 LCD_GoTo(1,0);
+ 780:	60 e0       	ldi	r22, 0x00	; 0
+ 782:	81 e0       	ldi	r24, 0x01	; 1
+ 784:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+		             LCD_WriteString("move to temp sys");
+ 788:	83 e5       	ldi	r24, 0x53	; 83
+ 78a:	91 e0       	ldi	r25, 0x01	; 1
+ 78c:	0e 94 04 02 	call	0x408	; 0x408 <LCD_WriteString>
+ 790:	9f e3       	ldi	r25, 0x3F	; 63
+ 792:	2d e0       	ldi	r18, 0x0D	; 13
+ 794:	83 e0       	ldi	r24, 0x03	; 3
+ 796:	91 50       	subi	r25, 0x01	; 1
+ 798:	20 40       	sbci	r18, 0x00	; 0
+ 79a:	80 40       	sbci	r24, 0x00	; 0
+ 79c:	e1 f7       	brne	.-8      	; 0x796 <CHACKPASS_FUN+0xe6>
+ 79e:	00 c0       	rjmp	.+0      	; 0x7a0 <CHACKPASS_FUN+0xf0>
+ 7a0:	00 00       	nop
+					 _delay_ms(1000);
+					 i=0;
+ 7a2:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <i>
+					 
+	TEMP_FUN();
+ 7a6:	0e 94 02 03 	call	0x604	; 0x604 <TEMP_FUN>
+	
+    val=0;
+    val = UART_ReceiveChar();
+	
+	if (val && i==0){load[i]=val;i++;val=0;}
+	  if (val && i==1){load[i]=val;i++;val=0;}
+ 7aa:	91 30       	cpi	r25, 0x01	; 1
+ 7ac:	09 f4       	brne	.+2      	; 0x7b0 <CHACKPASS_FUN+0x100>
+ 7ae:	a2 cf       	rjmp	.-188    	; 0x6f4 <CHACKPASS_FUN+0x44>
+		if (val && i==2){load[i]=val;i=0;val=0;break;}
+ 7b0:	90 91 4f 02 	lds	r25, 0x024F	; 0x80024f <i>
+ 7b4:	92 30       	cpi	r25, 0x02	; 2
+ 7b6:	09 f0       	breq	.+2      	; 0x7ba <CHACKPASS_FUN+0x10a>
+ 7b8:	8f cf       	rjmp	.-226    	; 0x6d8 <CHACKPASS_FUN+0x28>
+ 7ba:	a0 cf       	rjmp	.-192    	; 0x6fc <CHACKPASS_FUN+0x4c>
+					 i=0;
+					 
+	TEMP_FUN();
+	 }   // generc adc 
+		
+ }
+ 7bc:	df 91       	pop	r29
+ 7be:	cf 91       	pop	r28
+ 7c0:	1f 91       	pop	r17
+ 7c2:	0f 91       	pop	r16
+ 7c4:	08 95       	ret
+
+000007c6 <SPI_Master_Init>:
+//static void(*SPI_ptr_func)(void);
+
+void SPI_Master_Init(void)
+{
+	
+  DIO_SetPinDir(DIO_PORTB ,DIO_PIN4 , DIO_PIN_OUTPUT);
+ 7c6:	41 e0       	ldi	r20, 0x01	; 1
+ 7c8:	64 e0       	ldi	r22, 0x04	; 4
+ 7ca:	81 e0       	ldi	r24, 0x01	; 1
+ 7cc:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+  DIO_SetPinDir(DIO_PORTB ,DIO_PIN5 , DIO_PIN_OUTPUT);
+ 7d0:	41 e0       	ldi	r20, 0x01	; 1
+ 7d2:	65 e0       	ldi	r22, 0x05	; 5
+ 7d4:	81 e0       	ldi	r24, 0x01	; 1
+ 7d6:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+  DIO_SetPinDir(DIO_PORTB ,DIO_PIN6 , DIO_PIN_INPUT);
+ 7da:	40 e0       	ldi	r20, 0x00	; 0
+ 7dc:	66 e0       	ldi	r22, 0x06	; 6
+ 7de:	81 e0       	ldi	r24, 0x01	; 1
+ 7e0:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+  DIO_SetPinDir(DIO_PORTB ,DIO_PIN7 , DIO_PIN_OUTPUT);
+ 7e4:	41 e0       	ldi	r20, 0x01	; 1
+ 7e6:	67 e0       	ldi	r22, 0x07	; 7
+ 7e8:	81 e0       	ldi	r24, 0x01	; 1
+ 7ea:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+  
+  
+  SPI->SPCR = 0X53 ; //0x53
+ 7ee:	83 e5       	ldi	r24, 0x53	; 83
+ 7f0:	8d b9       	out	0x0d, r24	; 13
+ 7f2:	08 95       	ret
+
+000007f4 <SPI_TranSiver>:
+uint8 SPI_TranSiver(uint8 trans_data)
+{
+	
+	uint8 rec_data = 0;
+	
+	SPI->SPDR = trans_data ; 
+ 7f4:	8f b9       	out	0x0f, r24	; 15
+	
+	while(GET_BIT(SPI->SPSR , 7) == 0);
+ 7f6:	77 9b       	sbis	0x0e, 7	; 14
+ 7f8:	fe cf       	rjmp	.-4      	; 0x7f6 <SPI_TranSiver+0x2>
+	
+	rec_data = SPI->SPDR ; 
+ 7fa:	8f b1       	in	r24, 0x0f	; 15
+	
+	return rec_data ;
+	
+}
+ 7fc:	08 95       	ret
+
+000007fe <spi_fun1>:
+
+void spi_fun1(void)
+{
+	
+
+	 tx=1;
+ 7fe:	81 e0       	ldi	r24, 0x01	; 1
+ 800:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <tx>
+	rx=SPI_TranSiver(tx);
+ 804:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+ 808:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <rx>
+ 80c:	08 95       	ret
+
+0000080e <spi_fun2>:
+}
+
+void spi_fun2(void)
+{
+	
+	tx=2;
+ 80e:	82 e0       	ldi	r24, 0x02	; 2
+ 810:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <tx>
+   rx=  SPI_TranSiver(tx);
+ 814:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+ 818:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <rx>
+ 81c:	08 95       	ret
+
+0000081e <spi_fun3>:
+
+void spi_fun3(void)
+{
+	
+	
+	 tx=3;
+ 81e:	83 e0       	ldi	r24, 0x03	; 3
+ 820:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <tx>
+	rx=SPI_TranSiver(tx);
+ 824:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+ 828:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <rx>
+ 82c:	08 95       	ret
+
+0000082e <spi_fun4>:
+
+void spi_fun4(void)
+{
+	
+	
+	 tx=4;
+ 82e:	84 e0       	ldi	r24, 0x04	; 4
+ 830:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <tx>
+	rx= SPI_TranSiver(tx);
+ 834:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+ 838:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <rx>
+ 83c:	08 95       	ret
+
+0000083e <spi_bluotooth>:
+{
+	uint8 a=0,b=0,c=0,d=0,e=0,ttx;
+
+	sint32 temp = 0;
+	
+	UART_SendString ("LED green(1)");
+ 83e:	84 e6       	ldi	r24, 0x64	; 100
+ 840:	91 e0       	ldi	r25, 0x01	; 1
+ 842:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+	UART_SendString("LED yellow(2)");
+ 846:	81 e7       	ldi	r24, 0x71	; 113
+ 848:	91 e0       	ldi	r25, 0x01	; 1
+ 84a:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+	UART_SendString   ("LED red(3)");
+ 84e:	8f e7       	ldi	r24, 0x7F	; 127
+ 850:	91 e0       	ldi	r25, 0x01	; 1
+ 852:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+	UART_SendString     ("relay(4)");
+ 856:	8a e8       	ldi	r24, 0x8A	; 138
+ 858:	91 e0       	ldi	r25, 0x01	; 1
+ 85a:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+	UART_SendString    ("buzzer(5)");
+ 85e:	83 e9       	ldi	r24, 0x93	; 147
+ 860:	91 e0       	ldi	r25, 0x01	; 1
+ 862:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+}
+
+
+void spi_bluotooth(void)
+{
+	uint8 a=0,b=0,c=0,d=0,e=0,ttx;
+ 866:	c1 2c       	mov	r12, r1
+ 868:	d1 2c       	mov	r13, r1
+ 86a:	e1 2c       	mov	r14, r1
+ 86c:	f1 2c       	mov	r15, r1
+ 86e:	d0 e0       	ldi	r29, 0x00	; 0
+				UART_SendString("buzzer is on");
+				e=1;
+				SPI_TranSiver(ttx);
+				continue;
+			}
+			e=0;
+ 870:	00 e0       	ldi	r16, 0x00	; 0
+		{
+			ttx='e';
+			if (e==0)
+			{
+				UART_SendString("buzzer is on");
+				e=1;
+ 872:	11 e0       	ldi	r17, 0x01	; 1
+	UART_SendString     ("relay(4)");
+	UART_SendString    ("buzzer(5)");
+	
+	while(1){
+		
+		LCD_GoTo(0,0);
+ 874:	60 e0       	ldi	r22, 0x00	; 0
+ 876:	70 e0       	ldi	r23, 0x00	; 0
+ 878:	80 e0       	ldi	r24, 0x00	; 0
+ 87a:	90 e0       	ldi	r25, 0x00	; 0
+ 87c:	0e 94 1a 02 	call	0x434	; 0x434 <LCD_GoTo>
+		
+		ttx = UART_ReceiveChar();
+ 880:	0e 94 f5 04 	call	0x9ea	; 0x9ea <UART_ReceiveChar>
+ 884:	c8 2f       	mov	r28, r24
+		
+		// SPI_TranSiver(ttx);
+	rx = SPI_TranSiver(ttx);
+ 886:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+ 88a:	80 93 50 02 	sts	0x0250, r24	; 0x800250 <rx>
+	
+		
+		if (ttx=='1')
+ 88e:	c1 33       	cpi	r28, 0x31	; 49
+ 890:	a1 f4       	brne	.+40     	; 0x8ba <__stack+0x5b>
+		{
+			ttx='a';
+			if (a==0)
+ 892:	d1 11       	cpse	r29, r1
+ 894:	09 c0       	rjmp	.+18     	; 0x8a8 <__stack+0x49>
+			{
+				UART_SendString("LED green is on");
+ 896:	8d e9       	ldi	r24, 0x9D	; 157
+ 898:	91 e0       	ldi	r25, 0x01	; 1
+ 89a:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				a=1;
+				SPI_TranSiver(ttx);
+ 89e:	81 e6       	ldi	r24, 0x61	; 97
+ 8a0:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+		{
+			ttx='a';
+			if (a==0)
+			{
+				UART_SendString("LED green is on");
+				a=1;
+ 8a4:	d1 2f       	mov	r29, r17
+				SPI_TranSiver(ttx);
+				continue;
+ 8a6:	e6 cf       	rjmp	.-52     	; 0x874 <__stack+0x15>
+			}
+			a=0;
+				UART_SendString("LED green is off");
+ 8a8:	8d ea       	ldi	r24, 0xAD	; 173
+ 8aa:	91 e0       	ldi	r25, 0x01	; 1
+ 8ac:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				SPI_TranSiver(ttx);
+ 8b0:	81 e6       	ldi	r24, 0x61	; 97
+ 8b2:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+				UART_SendString("LED green is on");
+				a=1;
+				SPI_TranSiver(ttx);
+				continue;
+			}
+			a=0;
+ 8b6:	d0 2f       	mov	r29, r16
+ 8b8:	dd cf       	rjmp	.-70     	; 0x874 <__stack+0x15>
+				
+			
+		}
+		
+		
+	else	if (ttx =='2')
+ 8ba:	c2 33       	cpi	r28, 0x32	; 50
+ 8bc:	a1 f4       	brne	.+40     	; 0x8e6 <__stack+0x87>
+		{
+			ttx='b';
+			if (b==0)
+ 8be:	f1 10       	cpse	r15, r1
+ 8c0:	09 c0       	rjmp	.+18     	; 0x8d4 <__stack+0x75>
+			{
+				UART_SendString("LED yellow is on");
+ 8c2:	8e eb       	ldi	r24, 0xBE	; 190
+ 8c4:	91 e0       	ldi	r25, 0x01	; 1
+ 8c6:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				b=1;
+				SPI_TranSiver(ttx);
+ 8ca:	82 e6       	ldi	r24, 0x62	; 98
+ 8cc:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+		{
+			ttx='b';
+			if (b==0)
+			{
+				UART_SendString("LED yellow is on");
+				b=1;
+ 8d0:	f1 2e       	mov	r15, r17
+				SPI_TranSiver(ttx);
+				continue;
+ 8d2:	d0 cf       	rjmp	.-96     	; 0x874 <__stack+0x15>
+			}
+			b=0;
+				UART_SendString("LED yellow is off");
+ 8d4:	8f ec       	ldi	r24, 0xCF	; 207
+ 8d6:	91 e0       	ldi	r25, 0x01	; 1
+ 8d8:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				
+				 SPI_TranSiver(ttx);
+ 8dc:	82 e6       	ldi	r24, 0x62	; 98
+ 8de:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+				UART_SendString("LED yellow is on");
+				b=1;
+				SPI_TranSiver(ttx);
+				continue;
+			}
+			b=0;
+ 8e2:	f0 2e       	mov	r15, r16
+ 8e4:	c7 cf       	rjmp	.-114    	; 0x874 <__stack+0x15>
+				
+			
+		}
+		
+		
+	else	if (ttx=='3')
+ 8e6:	c3 33       	cpi	r28, 0x33	; 51
+ 8e8:	a1 f4       	brne	.+40     	; 0x912 <__stack+0xb3>
+		{
+			ttx='c';
+			if (c==0)
+ 8ea:	e1 10       	cpse	r14, r1
+ 8ec:	09 c0       	rjmp	.+18     	; 0x900 <__stack+0xa1>
+			{
+				UART_SendString("LED red is on");
+ 8ee:	81 ee       	ldi	r24, 0xE1	; 225
+ 8f0:	91 e0       	ldi	r25, 0x01	; 1
+ 8f2:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				c=1;
+				SPI_TranSiver(ttx);
+ 8f6:	83 e6       	ldi	r24, 0x63	; 99
+ 8f8:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+		{
+			ttx='c';
+			if (c==0)
+			{
+				UART_SendString("LED red is on");
+				c=1;
+ 8fc:	e1 2e       	mov	r14, r17
+				SPI_TranSiver(ttx);
+				continue;
+ 8fe:	ba cf       	rjmp	.-140    	; 0x874 <__stack+0x15>
+			}
+			c=0;
+				UART_SendString("LED red is off");
+ 900:	8f ee       	ldi	r24, 0xEF	; 239
+ 902:	91 e0       	ldi	r25, 0x01	; 1
+ 904:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				
+				 SPI_TranSiver(ttx);
+ 908:	83 e6       	ldi	r24, 0x63	; 99
+ 90a:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+				UART_SendString("LED red is on");
+				c=1;
+				SPI_TranSiver(ttx);
+				continue;
+			}
+			c=0;
+ 90e:	e0 2e       	mov	r14, r16
+ 910:	b1 cf       	rjmp	.-158    	; 0x874 <__stack+0x15>
+				 SPI_TranSiver(ttx);
+				
+		}
+		
+		
+	else	if (ttx=='4')
+ 912:	c4 33       	cpi	r28, 0x34	; 52
+ 914:	a1 f4       	brne	.+40     	; 0x93e <__stack+0xdf>
+		{
+			ttx='d';
+			if (d==0)
+ 916:	d1 10       	cpse	r13, r1
+ 918:	09 c0       	rjmp	.+18     	; 0x92c <__stack+0xcd>
+			{
+				UART_SendString("relay is on");
+ 91a:	8e ef       	ldi	r24, 0xFE	; 254
+ 91c:	91 e0       	ldi	r25, 0x01	; 1
+ 91e:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				d=1;
+				SPI_TranSiver(ttx);
+ 922:	84 e6       	ldi	r24, 0x64	; 100
+ 924:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+		{
+			ttx='d';
+			if (d==0)
+			{
+				UART_SendString("relay is on");
+				d=1;
+ 928:	d1 2e       	mov	r13, r17
+				SPI_TranSiver(ttx);
+				continue;
+ 92a:	a4 cf       	rjmp	.-184    	; 0x874 <__stack+0x15>
+			}
+			d=0;
+				UART_SendString("relay is off");
+ 92c:	8a e0       	ldi	r24, 0x0A	; 10
+ 92e:	92 e0       	ldi	r25, 0x02	; 2
+ 930:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				
+				SPI_TranSiver(ttx);
+ 934:	84 e6       	ldi	r24, 0x64	; 100
+ 936:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+				UART_SendString("relay is on");
+				d=1;
+				SPI_TranSiver(ttx);
+				continue;
+			}
+			d=0;
+ 93a:	d0 2e       	mov	r13, r16
+ 93c:	9b cf       	rjmp	.-202    	; 0x874 <__stack+0x15>
+				SPI_TranSiver(ttx);
+				
+		}
+		
+		
+	else	if (ttx=='5')
+ 93e:	c5 33       	cpi	r28, 0x35	; 53
+ 940:	a1 f4       	brne	.+40     	; 0x96a <__stack+0x10b>
+		{
+			ttx='e';
+			if (e==0)
+ 942:	c1 10       	cpse	r12, r1
+ 944:	09 c0       	rjmp	.+18     	; 0x958 <__stack+0xf9>
+			{
+				UART_SendString("buzzer is on");
+ 946:	87 e1       	ldi	r24, 0x17	; 23
+ 948:	92 e0       	ldi	r25, 0x02	; 2
+ 94a:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				e=1;
+				SPI_TranSiver(ttx);
+ 94e:	85 e6       	ldi	r24, 0x65	; 101
+ 950:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+		{
+			ttx='e';
+			if (e==0)
+			{
+				UART_SendString("buzzer is on");
+				e=1;
+ 954:	c1 2e       	mov	r12, r17
+				SPI_TranSiver(ttx);
+				continue;
+ 956:	8e cf       	rjmp	.-228    	; 0x874 <__stack+0x15>
+			}
+			e=0;
+				UART_SendString("buzzer is off");
+ 958:	84 e2       	ldi	r24, 0x24	; 36
+ 95a:	92 e0       	ldi	r25, 0x02	; 2
+ 95c:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+				
+				SPI_TranSiver(ttx);
+ 960:	85 e6       	ldi	r24, 0x65	; 101
+ 962:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <SPI_TranSiver>
+				UART_SendString("buzzer is on");
+				e=1;
+				SPI_TranSiver(ttx);
+				continue;
+			}
+			e=0;
+ 966:	c0 2e       	mov	r12, r16
+ 968:	85 cf       	rjmp	.-246    	; 0x874 <__stack+0x15>
+				UART_SendString("buzzer is off");
+				
+				SPI_TranSiver(ttx);
+				
+		}
+	else	if (ttx=='0')
+ 96a:	c0 33       	cpi	r28, 0x30	; 48
+ 96c:	09 f0       	breq	.+2      	; 0x970 <__stack+0x111>
+ 96e:	82 cf       	rjmp	.-252    	; 0x874 <__stack+0x15>
+		{
+			
+			//ttx = UART_ReceiveChar();
+			UART_SendString("back to normal system");
+ 970:	82 e3       	ldi	r24, 0x32	; 50
+ 972:	92 e0       	ldi	r25, 0x02	; 2
+ 974:	0e 94 df 04 	call	0x9be	; 0x9be <UART_SendString>
+ 978:	2f ef       	ldi	r18, 0xFF	; 255
+ 97a:	84 e3       	ldi	r24, 0x34	; 52
+ 97c:	9c e0       	ldi	r25, 0x0C	; 12
+ 97e:	21 50       	subi	r18, 0x01	; 1
+ 980:	80 40       	sbci	r24, 0x00	; 0
+ 982:	90 40       	sbci	r25, 0x00	; 0
+ 984:	e1 f7       	brne	.-8      	; 0x97e <__stack+0x11f>
+ 986:	00 c0       	rjmp	.+0      	; 0x988 <__stack+0x129>
+ 988:	00 00       	nop
+			_delay_ms(1000);
+			CHACKPASS_FUN();
+ 98a:	0e 94 58 03 	call	0x6b0	; 0x6b0 <CHACKPASS_FUN>
+ 98e:	72 cf       	rjmp	.-284    	; 0x874 <__stack+0x15>
+
+00000990 <UART_Init>:
+
+void UART_Init(void)
+{
+	uint32 Br_Val = 0;
+	
+	DIO_SetPinDir(DIO_PORTD ,DIO_PIN1 , DIO_PIN_OUTPUT);
+ 990:	41 e0       	ldi	r20, 0x01	; 1
+ 992:	61 e0       	ldi	r22, 0x01	; 1
+ 994:	83 e0       	ldi	r24, 0x03	; 3
+ 996:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+	DIO_SetPinDir(DIO_PORTD ,DIO_PIN0 , DIO_PIN_INPUT );
+ 99a:	40 e0       	ldi	r20, 0x00	; 0
+ 99c:	60 e0       	ldi	r22, 0x00	; 0
+ 99e:	83 e0       	ldi	r24, 0x03	; 3
+ 9a0:	0e 94 49 00 	call	0x92	; 0x92 <DIO_SetPinDir>
+	
+	UCSRB |= 0X18;
+ 9a4:	8a b1       	in	r24, 0x0a	; 10
+ 9a6:	88 61       	ori	r24, 0x18	; 24
+ 9a8:	8a b9       	out	0x0a, r24	; 10
+	UCSRC |= 0X86; 
+ 9aa:	80 b5       	in	r24, 0x20	; 32
+ 9ac:	86 68       	ori	r24, 0x86	; 134
+ 9ae:	80 bd       	out	0x20, r24	; 32
+	
+	Br_Val = ((40000) / (16 * (96))) -1;//if mhz 160000  80000 in proteus 40000
+	
+	UBRRL = Br_Val;  //104 ;
+ 9b0:	89 e1       	ldi	r24, 0x19	; 25
+ 9b2:	89 b9       	out	0x09, r24	; 9
+ 9b4:	08 95       	ret
+
+000009b6 <UART_SendChar>:
+	 
+}
+
+void UART_SendChar(uint8 data)
+{
+	UDR = data;
+ 9b6:	8c b9       	out	0x0c, r24	; 12
+	
+	while(GET_BIT(UCSRA,5) == 0 );
+ 9b8:	5d 9b       	sbis	0x0b, 5	; 11
+ 9ba:	fe cf       	rjmp	.-4      	; 0x9b8 <UART_SendChar+0x2>
+	
+	
+}
+ 9bc:	08 95       	ret
+
+000009be <UART_SendString>:
+
+void UART_SendString(uint8* str)
+{
+ 9be:	0f 93       	push	r16
+ 9c0:	1f 93       	push	r17
+ 9c2:	cf 93       	push	r28
+ 9c4:	fc 01       	movw	r30, r24
+	uint8 i = 0;
+	
+	while(str[i] != '\0')
+ 9c6:	80 81       	ld	r24, Z
+ 9c8:	88 23       	and	r24, r24
+ 9ca:	59 f0       	breq	.+22     	; 0x9e2 <UART_SendString+0x24>
+ 9cc:	8f 01       	movw	r16, r30
+ 9ce:	c0 e0       	ldi	r28, 0x00	; 0
+	{
+		UART_SendChar(str[i]);
+ 9d0:	0e 94 db 04 	call	0x9b6	; 0x9b6 <UART_SendChar>
+		i++;
+ 9d4:	cf 5f       	subi	r28, 0xFF	; 255
+
+void UART_SendString(uint8* str)
+{
+	uint8 i = 0;
+	
+	while(str[i] != '\0')
+ 9d6:	f8 01       	movw	r30, r16
+ 9d8:	ec 0f       	add	r30, r28
+ 9da:	f1 1d       	adc	r31, r1
+ 9dc:	80 81       	ld	r24, Z
+ 9de:	81 11       	cpse	r24, r1
+ 9e0:	f7 cf       	rjmp	.-18     	; 0x9d0 <UART_SendString+0x12>
+	{
+		UART_SendChar(str[i]);
+		i++;
+	}
+}
+ 9e2:	cf 91       	pop	r28
+ 9e4:	1f 91       	pop	r17
+ 9e6:	0f 91       	pop	r16
+ 9e8:	08 95       	ret
+
+000009ea <UART_ReceiveChar>:
+
+uint8 UART_ReceiveChar(void)
+{
+	uint8 data = 0;
+	
+	while(GET_BIT(UCSRA,7) == 0 );
+ 9ea:	5f 9b       	sbis	0x0b, 7	; 11
+ 9ec:	fe cf       	rjmp	.-4      	; 0x9ea <UART_ReceiveChar>
+	
+	data = UDR ;
+ 9ee:	8c b1       	in	r24, 0x0c	; 12
+	
+	return data;
+}
+ 9f0:	08 95       	ret
+
+000009f2 <_exit>:
+ 9f2:	f8 94       	cli
+
+000009f4 <__stop_program>:
+ 9f4:	ff cf       	rjmp	.-2      	; 0x9f4 <__stop_program>
